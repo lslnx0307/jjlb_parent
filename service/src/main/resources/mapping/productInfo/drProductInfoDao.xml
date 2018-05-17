@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jjlb.dao.productDao.drProductInfoDao">
+  <resultMap id="BaseResultMap" type="com.jjlb.model.entity.productInfo.drProductInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="sid" jdbcType="INTEGER" property="sid" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="fullName" jdbcType="VARCHAR" property="fullname" />
+    <result column="simpleName" jdbcType="VARCHAR" property="simplename" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="intermediary" jdbcType="TINYINT" property="intermediary" />
+    <result column="isSid" jdbcType="TINYINT" property="issid" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="alreadyRaiseAmount" jdbcType="DECIMAL" property="alreadyraiseamount" />
+    <result column="surplusAmount" jdbcType="DECIMAL" property="surplusamount" />
+    <result column="rate" jdbcType="DECIMAL" property="rate" />
+    <result column="activityRate" jdbcType="DECIMAL" property="activityrate" />
+    <result column="repayType" jdbcType="TINYINT" property="repaytype" />
+    <result column="deadline" jdbcType="INTEGER" property="deadline" />
+    <result column="leastaAmount" jdbcType="DECIMAL" property="leastaamount" />
+    <result column="increasAmount" jdbcType="DECIMAL" property="increasamount" />
+    <result column="maxAmount" jdbcType="DECIMAL" property="maxamount" />
+    <result column="raiseDeadline" jdbcType="INTEGER" property="raisedeadline" />
+    <result column="startDate" jdbcType="TIMESTAMP" property="startdate" />
+    <result column="fullDate" jdbcType="TIMESTAMP" property="fulldate" />
+    <result column="establish" jdbcType="TIMESTAMP" property="establish" />
+    <result column="expireDate" jdbcType="TIMESTAMP" property="expiredate" />
+    <result column="introduce" jdbcType="VARCHAR" property="introduce" />
+    <result column="borrower" jdbcType="VARCHAR" property="borrower" />
+    <result column="repaySource" jdbcType="VARCHAR" property="repaysource" />
+    <result column="windMeasure" jdbcType="VARCHAR" property="windmeasure" />
+    <result column="isShow" jdbcType="TINYINT" property="isshow" />
+    <result column="isHot" jdbcType="TINYINT" property="ishot" />
+    <result column="isDeductible" jdbcType="TINYINT" property="isdeductible" />
+    <result column="isInterest" jdbcType="TINYINT" property="isinterest" />
+    <result column="isCash" jdbcType="TINYINT" property="iscash" />
+    <result column="interestType" jdbcType="INTEGER" property="interesttype" />
+    <result column="mappingStatus" jdbcType="INTEGER" property="mappingstatus" />
+    <result column="isDouble" jdbcType="TINYINT" property="isdouble" />
+    <result column="accept" jdbcType="VARCHAR" property="accept" />
+    <result column="acceptPic" jdbcType="VARCHAR" property="acceptpic" />
+    <result column="addDate" jdbcType="TIMESTAMP" property="adddate" />
+    <result column="addUser" jdbcType="INTEGER" property="adduser" />
+    <result column="updDate" jdbcType="TIMESTAMP" property="upddate" />
+    <result column="updUser" jdbcType="INTEGER" property="upduser" />
+    <result column="atid" jdbcType="INTEGER" property="atid" />
+    <result column="loanStatus" jdbcType="TINYINT" property="loanstatus" />
+    <result column="actLoanTime" jdbcType="TIMESTAMP" property="actloantime" />
+    <result column="prizeId" jdbcType="INTEGER" property="prizeid" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="project_st" jdbcType="VARCHAR" property="projectSt" />
+    <result column="project_usage" jdbcType="VARCHAR" property="projectUsage" />
+    <result column="interest_success_num" jdbcType="INTEGER" property="interestSuccessNum" />
+    <result column="interest_fail_num" jdbcType="INTEGER" property="interestFailNum" />
+    <result column="interest_status" jdbcType="INTEGER" property="interestStatus" />
+    <result column="repay_success_num" jdbcType="INTEGER" property="repaySuccessNum" />
+    <result column="repay_fail_num" jdbcType="INTEGER" property="repayFailNum" />
+    <result column="repay_status" jdbcType="INTEGER" property="repayStatus" />
+    <result column="mchnt_txn_ssn" jdbcType="VARCHAR" property="mchntTxnSsn" />
+    <result column="thaw" jdbcType="INTEGER" property="thaw" />
+    <result column="fuiouMessageNo" jdbcType="VARCHAR" property="fuioumessageno" />
+    <result column="fileStatus" jdbcType="INTEGER" property="filestatus" />
+    <result column="failureCause" jdbcType="VARCHAR" property="failurecause" />
+    <result column="principleId" jdbcType="INTEGER" property="principleid" />
+    <result column="principleH5" jdbcType="VARCHAR" property="principleh5" />
+    <result column="principlePC" jdbcType="VARCHAR" property="principlepc" />
+    <result column="isSyn" jdbcType="INTEGER" property="issyn" />
+    <result column="itemNo" jdbcType="VARCHAR" property="itemno" />
+    <result column="mgid" jdbcType="INTEGER" property="mgid" />
+    <result column="productMarking" jdbcType="INTEGER" property="productmarking" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, fid, sid, code, fullName, simpleName, type, status, intermediary, isSid, amount, 
+    alreadyRaiseAmount, surplusAmount, rate, activityRate, repayType, deadline, leastaAmount, 
+    increasAmount, maxAmount, raiseDeadline, startDate, fullDate, establish, expireDate, 
+    introduce, borrower, repaySource, windMeasure, isShow, isHot, isDeductible, isInterest, 
+    isCash, interestType, mappingStatus, isDouble, accept, acceptPic, addDate, addUser, 
+    updDate, updUser, atid, loanStatus, actLoanTime, prizeId, project_no, project_st, 
+    project_usage, interest_success_num, interest_fail_num, interest_status, repay_success_num, 
+    repay_fail_num, repay_status, mchnt_txn_ssn, thaw, fuiouMessageNo, fileStatus, failureCause, 
+    principleId, principleH5, principlePC, isSyn, itemNo, mgid, productMarking
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dr_product_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dr_product_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+    insert into dr_product_info (id, fid, sid, 
+      code, fullName, simpleName, 
+      type, status, intermediary, 
+      isSid, amount, alreadyRaiseAmount, 
+      surplusAmount, rate, activityRate, 
+      repayType, deadline, leastaAmount, 
+      increasAmount, maxAmount, raiseDeadline, 
+      startDate, fullDate, establish, 
+      expireDate, introduce, borrower, 
+      repaySource, windMeasure, isShow, 
+      isHot, isDeductible, isInterest, 
+      isCash, interestType, mappingStatus, 
+      isDouble, accept, acceptPic, 
+      addDate, addUser, updDate, 
+      updUser, atid, loanStatus, 
+      actLoanTime, prizeId, project_no, 
+      project_st, project_usage, interest_success_num, 
+      interest_fail_num, interest_status, repay_success_num, 
+      repay_fail_num, repay_status, mchnt_txn_ssn, 
+      thaw, fuiouMessageNo, fileStatus, 
+      failureCause, principleId, principleH5, 
+      principlePC, isSyn, itemNo, 
+      mgid, productMarking)
+    values (#{id,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{fullname,jdbcType=VARCHAR}, #{simplename,jdbcType=VARCHAR}, 
+      #{type,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{intermediary,jdbcType=TINYINT}, 
+      #{issid,jdbcType=TINYINT}, #{amount,jdbcType=DECIMAL}, #{alreadyraiseamount,jdbcType=DECIMAL}, 
+      #{surplusamount,jdbcType=DECIMAL}, #{rate,jdbcType=DECIMAL}, #{activityrate,jdbcType=DECIMAL}, 
+      #{repaytype,jdbcType=TINYINT}, #{deadline,jdbcType=INTEGER}, #{leastaamount,jdbcType=DECIMAL}, 
+      #{increasamount,jdbcType=DECIMAL}, #{maxamount,jdbcType=DECIMAL}, #{raisedeadline,jdbcType=INTEGER}, 
+      #{startdate,jdbcType=TIMESTAMP}, #{fulldate,jdbcType=TIMESTAMP}, #{establish,jdbcType=TIMESTAMP}, 
+      #{expiredate,jdbcType=TIMESTAMP}, #{introduce,jdbcType=VARCHAR}, #{borrower,jdbcType=VARCHAR}, 
+      #{repaysource,jdbcType=VARCHAR}, #{windmeasure,jdbcType=VARCHAR}, #{isshow,jdbcType=TINYINT}, 
+      #{ishot,jdbcType=TINYINT}, #{isdeductible,jdbcType=TINYINT}, #{isinterest,jdbcType=TINYINT}, 
+      #{iscash,jdbcType=TINYINT}, #{interesttype,jdbcType=INTEGER}, #{mappingstatus,jdbcType=INTEGER}, 
+      #{isdouble,jdbcType=TINYINT}, #{accept,jdbcType=VARCHAR}, #{acceptpic,jdbcType=VARCHAR}, 
+      #{adddate,jdbcType=TIMESTAMP}, #{adduser,jdbcType=INTEGER}, #{upddate,jdbcType=TIMESTAMP}, 
+      #{upduser,jdbcType=INTEGER}, #{atid,jdbcType=INTEGER}, #{loanstatus,jdbcType=TINYINT}, 
+      #{actloantime,jdbcType=TIMESTAMP}, #{prizeid,jdbcType=INTEGER}, #{projectNo,jdbcType=VARCHAR}, 
+      #{projectSt,jdbcType=VARCHAR}, #{projectUsage,jdbcType=VARCHAR}, #{interestSuccessNum,jdbcType=INTEGER}, 
+      #{interestFailNum,jdbcType=INTEGER}, #{interestStatus,jdbcType=INTEGER}, #{repaySuccessNum,jdbcType=INTEGER}, 
+      #{repayFailNum,jdbcType=INTEGER}, #{repayStatus,jdbcType=INTEGER}, #{mchntTxnSsn,jdbcType=VARCHAR}, 
+      #{thaw,jdbcType=INTEGER}, #{fuioumessageno,jdbcType=VARCHAR}, #{filestatus,jdbcType=INTEGER}, 
+      #{failurecause,jdbcType=VARCHAR}, #{principleid,jdbcType=INTEGER}, #{principleh5,jdbcType=VARCHAR}, 
+      #{principlepc,jdbcType=VARCHAR}, #{issyn,jdbcType=INTEGER}, #{itemno,jdbcType=VARCHAR}, 
+      #{mgid,jdbcType=INTEGER}, #{productmarking,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+    insert into dr_product_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="fullname != null">
+        fullName,
+      </if>
+      <if test="simplename != null">
+        simpleName,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="intermediary != null">
+        intermediary,
+      </if>
+      <if test="issid != null">
+        isSid,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="alreadyraiseamount != null">
+        alreadyRaiseAmount,
+      </if>
+      <if test="surplusamount != null">
+        surplusAmount,
+      </if>
+      <if test="rate != null">
+        rate,
+      </if>
+      <if test="activityrate != null">
+        activityRate,
+      </if>
+      <if test="repaytype != null">
+        repayType,
+      </if>
+      <if test="deadline != null">
+        deadline,
+      </if>
+      <if test="leastaamount != null">
+        leastaAmount,
+      </if>
+      <if test="increasamount != null">
+        increasAmount,
+      </if>
+      <if test="maxamount != null">
+        maxAmount,
+      </if>
+      <if test="raisedeadline != null">
+        raiseDeadline,
+      </if>
+      <if test="startdate != null">
+        startDate,
+      </if>
+      <if test="fulldate != null">
+        fullDate,
+      </if>
+      <if test="establish != null">
+        establish,
+      </if>
+      <if test="expiredate != null">
+        expireDate,
+      </if>
+      <if test="introduce != null">
+        introduce,
+      </if>
+      <if test="borrower != null">
+        borrower,
+      </if>
+      <if test="repaysource != null">
+        repaySource,
+      </if>
+      <if test="windmeasure != null">
+        windMeasure,
+      </if>
+      <if test="isshow != null">
+        isShow,
+      </if>
+      <if test="ishot != null">
+        isHot,
+      </if>
+      <if test="isdeductible != null">
+        isDeductible,
+      </if>
+      <if test="isinterest != null">
+        isInterest,
+      </if>
+      <if test="iscash != null">
+        isCash,
+      </if>
+      <if test="interesttype != null">
+        interestType,
+      </if>
+      <if test="mappingstatus != null">
+        mappingStatus,
+      </if>
+      <if test="isdouble != null">
+        isDouble,
+      </if>
+      <if test="accept != null">
+        accept,
+      </if>
+      <if test="acceptpic != null">
+        acceptPic,
+      </if>
+      <if test="adddate != null">
+        addDate,
+      </if>
+      <if test="adduser != null">
+        addUser,
+      </if>
+      <if test="upddate != null">
+        updDate,
+      </if>
+      <if test="upduser != null">
+        updUser,
+      </if>
+      <if test="atid != null">
+        atid,
+      </if>
+      <if test="loanstatus != null">
+        loanStatus,
+      </if>
+      <if test="actloantime != null">
+        actLoanTime,
+      </if>
+      <if test="prizeid != null">
+        prizeId,
+      </if>
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="projectSt != null">
+        project_st,
+      </if>
+      <if test="projectUsage != null">
+        project_usage,
+      </if>
+      <if test="interestSuccessNum != null">
+        interest_success_num,
+      </if>
+      <if test="interestFailNum != null">
+        interest_fail_num,
+      </if>
+      <if test="interestStatus != null">
+        interest_status,
+      </if>
+      <if test="repaySuccessNum != null">
+        repay_success_num,
+      </if>
+      <if test="repayFailNum != null">
+        repay_fail_num,
+      </if>
+      <if test="repayStatus != null">
+        repay_status,
+      </if>
+      <if test="mchntTxnSsn != null">
+        mchnt_txn_ssn,
+      </if>
+      <if test="thaw != null">
+        thaw,
+      </if>
+      <if test="fuioumessageno != null">
+        fuiouMessageNo,
+      </if>
+      <if test="filestatus != null">
+        fileStatus,
+      </if>
+      <if test="failurecause != null">
+        failureCause,
+      </if>
+      <if test="principleid != null">
+        principleId,
+      </if>
+      <if test="principleh5 != null">
+        principleH5,
+      </if>
+      <if test="principlepc != null">
+        principlePC,
+      </if>
+      <if test="issyn != null">
+        isSyn,
+      </if>
+      <if test="itemno != null">
+        itemNo,
+      </if>
+      <if test="mgid != null">
+        mgid,
+      </if>
+      <if test="productmarking != null">
+        productMarking,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="simplename != null">
+        #{simplename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="intermediary != null">
+        #{intermediary,jdbcType=TINYINT},
+      </if>
+      <if test="issid != null">
+        #{issid,jdbcType=TINYINT},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="alreadyraiseamount != null">
+        #{alreadyraiseamount,jdbcType=DECIMAL},
+      </if>
+      <if test="surplusamount != null">
+        #{surplusamount,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null">
+        #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="activityrate != null">
+        #{activityrate,jdbcType=DECIMAL},
+      </if>
+      <if test="repaytype != null">
+        #{repaytype,jdbcType=TINYINT},
+      </if>
+      <if test="deadline != null">
+        #{deadline,jdbcType=INTEGER},
+      </if>
+      <if test="leastaamount != null">
+        #{leastaamount,jdbcType=DECIMAL},
+      </if>
+      <if test="increasamount != null">
+        #{increasamount,jdbcType=DECIMAL},
+      </if>
+      <if test="maxamount != null">
+        #{maxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="raisedeadline != null">
+        #{raisedeadline,jdbcType=INTEGER},
+      </if>
+      <if test="startdate != null">
+        #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fulldate != null">
+        #{fulldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="establish != null">
+        #{establish,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredate != null">
+        #{expiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduce != null">
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="borrower != null">
+        #{borrower,jdbcType=VARCHAR},
+      </if>
+      <if test="repaysource != null">
+        #{repaysource,jdbcType=VARCHAR},
+      </if>
+      <if test="windmeasure != null">
+        #{windmeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="isshow != null">
+        #{isshow,jdbcType=TINYINT},
+      </if>
+      <if test="ishot != null">
+        #{ishot,jdbcType=TINYINT},
+      </if>
+      <if test="isdeductible != null">
+        #{isdeductible,jdbcType=TINYINT},
+      </if>
+      <if test="isinterest != null">
+        #{isinterest,jdbcType=TINYINT},
+      </if>
+      <if test="iscash != null">
+        #{iscash,jdbcType=TINYINT},
+      </if>
+      <if test="interesttype != null">
+        #{interesttype,jdbcType=INTEGER},
+      </if>
+      <if test="mappingstatus != null">
+        #{mappingstatus,jdbcType=INTEGER},
+      </if>
+      <if test="isdouble != null">
+        #{isdouble,jdbcType=TINYINT},
+      </if>
+      <if test="accept != null">
+        #{accept,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptpic != null">
+        #{acceptpic,jdbcType=VARCHAR},
+      </if>
+      <if test="adddate != null">
+        #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduser != null">
+        #{adduser,jdbcType=INTEGER},
+      </if>
+      <if test="upddate != null">
+        #{upddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduser != null">
+        #{upduser,jdbcType=INTEGER},
+      </if>
+      <if test="atid != null">
+        #{atid,jdbcType=INTEGER},
+      </if>
+      <if test="loanstatus != null">
+        #{loanstatus,jdbcType=TINYINT},
+      </if>
+      <if test="actloantime != null">
+        #{actloantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prizeid != null">
+        #{prizeid,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectSt != null">
+        #{projectSt,jdbcType=VARCHAR},
+      </if>
+      <if test="projectUsage != null">
+        #{projectUsage,jdbcType=VARCHAR},
+      </if>
+      <if test="interestSuccessNum != null">
+        #{interestSuccessNum,jdbcType=INTEGER},
+      </if>
+      <if test="interestFailNum != null">
+        #{interestFailNum,jdbcType=INTEGER},
+      </if>
+      <if test="interestStatus != null">
+        #{interestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="repaySuccessNum != null">
+        #{repaySuccessNum,jdbcType=INTEGER},
+      </if>
+      <if test="repayFailNum != null">
+        #{repayFailNum,jdbcType=INTEGER},
+      </if>
+      <if test="repayStatus != null">
+        #{repayStatus,jdbcType=INTEGER},
+      </if>
+      <if test="mchntTxnSsn != null">
+        #{mchntTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="thaw != null">
+        #{thaw,jdbcType=INTEGER},
+      </if>
+      <if test="fuioumessageno != null">
+        #{fuioumessageno,jdbcType=VARCHAR},
+      </if>
+      <if test="filestatus != null">
+        #{filestatus,jdbcType=INTEGER},
+      </if>
+      <if test="failurecause != null">
+        #{failurecause,jdbcType=VARCHAR},
+      </if>
+      <if test="principleid != null">
+        #{principleid,jdbcType=INTEGER},
+      </if>
+      <if test="principleh5 != null">
+        #{principleh5,jdbcType=VARCHAR},
+      </if>
+      <if test="principlepc != null">
+        #{principlepc,jdbcType=VARCHAR},
+      </if>
+      <if test="issyn != null">
+        #{issyn,jdbcType=INTEGER},
+      </if>
+      <if test="itemno != null">
+        #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="mgid != null">
+        #{mgid,jdbcType=INTEGER},
+      </if>
+      <if test="productmarking != null">
+        #{productmarking,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+    update dr_product_info
+    <set>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="fullname != null">
+        fullName = #{fullname,jdbcType=VARCHAR},
+      </if>
+      <if test="simplename != null">
+        simpleName = #{simplename,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="intermediary != null">
+        intermediary = #{intermediary,jdbcType=TINYINT},
+      </if>
+      <if test="issid != null">
+        isSid = #{issid,jdbcType=TINYINT},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="alreadyraiseamount != null">
+        alreadyRaiseAmount = #{alreadyraiseamount,jdbcType=DECIMAL},
+      </if>
+      <if test="surplusamount != null">
+        surplusAmount = #{surplusamount,jdbcType=DECIMAL},
+      </if>
+      <if test="rate != null">
+        rate = #{rate,jdbcType=DECIMAL},
+      </if>
+      <if test="activityrate != null">
+        activityRate = #{activityrate,jdbcType=DECIMAL},
+      </if>
+      <if test="repaytype != null">
+        repayType = #{repaytype,jdbcType=TINYINT},
+      </if>
+      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=INTEGER},
+      </if>
+      <if test="leastaamount != null">
+        leastaAmount = #{leastaamount,jdbcType=DECIMAL},
+      </if>
+      <if test="increasamount != null">
+        increasAmount = #{increasamount,jdbcType=DECIMAL},
+      </if>
+      <if test="maxamount != null">
+        maxAmount = #{maxamount,jdbcType=DECIMAL},
+      </if>
+      <if test="raisedeadline != null">
+        raiseDeadline = #{raisedeadline,jdbcType=INTEGER},
+      </if>
+      <if test="startdate != null">
+        startDate = #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fulldate != null">
+        fullDate = #{fulldate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="establish != null">
+        establish = #{establish,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiredate != null">
+        expireDate = #{expiredate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="introduce != null">
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="borrower != null">
+        borrower = #{borrower,jdbcType=VARCHAR},
+      </if>
+      <if test="repaysource != null">
+        repaySource = #{repaysource,jdbcType=VARCHAR},
+      </if>
+      <if test="windmeasure != null">
+        windMeasure = #{windmeasure,jdbcType=VARCHAR},
+      </if>
+      <if test="isshow != null">
+        isShow = #{isshow,jdbcType=TINYINT},
+      </if>
+      <if test="ishot != null">
+        isHot = #{ishot,jdbcType=TINYINT},
+      </if>
+      <if test="isdeductible != null">
+        isDeductible = #{isdeductible,jdbcType=TINYINT},
+      </if>
+      <if test="isinterest != null">
+        isInterest = #{isinterest,jdbcType=TINYINT},
+      </if>
+      <if test="iscash != null">
+        isCash = #{iscash,jdbcType=TINYINT},
+      </if>
+      <if test="interesttype != null">
+        interestType = #{interesttype,jdbcType=INTEGER},
+      </if>
+      <if test="mappingstatus != null">
+        mappingStatus = #{mappingstatus,jdbcType=INTEGER},
+      </if>
+      <if test="isdouble != null">
+        isDouble = #{isdouble,jdbcType=TINYINT},
+      </if>
+      <if test="accept != null">
+        accept = #{accept,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptpic != null">
+        acceptPic = #{acceptpic,jdbcType=VARCHAR},
+      </if>
+      <if test="adddate != null">
+        addDate = #{adddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduser != null">
+        addUser = #{adduser,jdbcType=INTEGER},
+      </if>
+      <if test="upddate != null">
+        updDate = #{upddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upduser != null">
+        updUser = #{upduser,jdbcType=INTEGER},
+      </if>
+      <if test="atid != null">
+        atid = #{atid,jdbcType=INTEGER},
+      </if>
+      <if test="loanstatus != null">
+        loanStatus = #{loanstatus,jdbcType=TINYINT},
+      </if>
+      <if test="actloantime != null">
+        actLoanTime = #{actloantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prizeid != null">
+        prizeId = #{prizeid,jdbcType=INTEGER},
+      </if>
+      <if test="projectNo != null">
+        project_no = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectSt != null">
+        project_st = #{projectSt,jdbcType=VARCHAR},
+      </if>
+      <if test="projectUsage != null">
+        project_usage = #{projectUsage,jdbcType=VARCHAR},
+      </if>
+      <if test="interestSuccessNum != null">
+        interest_success_num = #{interestSuccessNum,jdbcType=INTEGER},
+      </if>
+      <if test="interestFailNum != null">
+        interest_fail_num = #{interestFailNum,jdbcType=INTEGER},
+      </if>
+      <if test="interestStatus != null">
+        interest_status = #{interestStatus,jdbcType=INTEGER},
+      </if>
+      <if test="repaySuccessNum != null">
+        repay_success_num = #{repaySuccessNum,jdbcType=INTEGER},
+      </if>
+      <if test="repayFailNum != null">
+        repay_fail_num = #{repayFailNum,jdbcType=INTEGER},
+      </if>
+      <if test="repayStatus != null">
+        repay_status = #{repayStatus,jdbcType=INTEGER},
+      </if>
+      <if test="mchntTxnSsn != null">
+        mchnt_txn_ssn = #{mchntTxnSsn,jdbcType=VARCHAR},
+      </if>
+      <if test="thaw != null">
+        thaw = #{thaw,jdbcType=INTEGER},
+      </if>
+      <if test="fuioumessageno != null">
+        fuiouMessageNo = #{fuioumessageno,jdbcType=VARCHAR},
+      </if>
+      <if test="filestatus != null">
+        fileStatus = #{filestatus,jdbcType=INTEGER},
+      </if>
+      <if test="failurecause != null">
+        failureCause = #{failurecause,jdbcType=VARCHAR},
+      </if>
+      <if test="principleid != null">
+        principleId = #{principleid,jdbcType=INTEGER},
+      </if>
+      <if test="principleh5 != null">
+        principleH5 = #{principleh5,jdbcType=VARCHAR},
+      </if>
+      <if test="principlepc != null">
+        principlePC = #{principlepc,jdbcType=VARCHAR},
+      </if>
+      <if test="issyn != null">
+        isSyn = #{issyn,jdbcType=INTEGER},
+      </if>
+      <if test="itemno != null">
+        itemNo = #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="mgid != null">
+        mgid = #{mgid,jdbcType=INTEGER},
+      </if>
+      <if test="productmarking != null">
+        productMarking = #{productmarking,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+    update dr_product_info
+    set fid = #{fid,jdbcType=INTEGER},
+      sid = #{sid,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      fullName = #{fullname,jdbcType=VARCHAR},
+      simpleName = #{simplename,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      intermediary = #{intermediary,jdbcType=TINYINT},
+      isSid = #{issid,jdbcType=TINYINT},
+      amount = #{amount,jdbcType=DECIMAL},
+      alreadyRaiseAmount = #{alreadyraiseamount,jdbcType=DECIMAL},
+      surplusAmount = #{surplusamount,jdbcType=DECIMAL},
+      rate = #{rate,jdbcType=DECIMAL},
+      activityRate = #{activityrate,jdbcType=DECIMAL},
+      repayType = #{repaytype,jdbcType=TINYINT},
+      deadline = #{deadline,jdbcType=INTEGER},
+      leastaAmount = #{leastaamount,jdbcType=DECIMAL},
+      increasAmount = #{increasamount,jdbcType=DECIMAL},
+      maxAmount = #{maxamount,jdbcType=DECIMAL},
+      raiseDeadline = #{raisedeadline,jdbcType=INTEGER},
+      startDate = #{startdate,jdbcType=TIMESTAMP},
+      fullDate = #{fulldate,jdbcType=TIMESTAMP},
+      establish = #{establish,jdbcType=TIMESTAMP},
+      expireDate = #{expiredate,jdbcType=TIMESTAMP},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      borrower = #{borrower,jdbcType=VARCHAR},
+      repaySource = #{repaysource,jdbcType=VARCHAR},
+      windMeasure = #{windmeasure,jdbcType=VARCHAR},
+      isShow = #{isshow,jdbcType=TINYINT},
+      isHot = #{ishot,jdbcType=TINYINT},
+      isDeductible = #{isdeductible,jdbcType=TINYINT},
+      isInterest = #{isinterest,jdbcType=TINYINT},
+      isCash = #{iscash,jdbcType=TINYINT},
+      interestType = #{interesttype,jdbcType=INTEGER},
+      mappingStatus = #{mappingstatus,jdbcType=INTEGER},
+      isDouble = #{isdouble,jdbcType=TINYINT},
+      accept = #{accept,jdbcType=VARCHAR},
+      acceptPic = #{acceptpic,jdbcType=VARCHAR},
+      addDate = #{adddate,jdbcType=TIMESTAMP},
+      addUser = #{adduser,jdbcType=INTEGER},
+      updDate = #{upddate,jdbcType=TIMESTAMP},
+      updUser = #{upduser,jdbcType=INTEGER},
+      atid = #{atid,jdbcType=INTEGER},
+      loanStatus = #{loanstatus,jdbcType=TINYINT},
+      actLoanTime = #{actloantime,jdbcType=TIMESTAMP},
+      prizeId = #{prizeid,jdbcType=INTEGER},
+      project_no = #{projectNo,jdbcType=VARCHAR},
+      project_st = #{projectSt,jdbcType=VARCHAR},
+      project_usage = #{projectUsage,jdbcType=VARCHAR},
+      interest_success_num = #{interestSuccessNum,jdbcType=INTEGER},
+      interest_fail_num = #{interestFailNum,jdbcType=INTEGER},
+      interest_status = #{interestStatus,jdbcType=INTEGER},
+      repay_success_num = #{repaySuccessNum,jdbcType=INTEGER},
+      repay_fail_num = #{repayFailNum,jdbcType=INTEGER},
+      repay_status = #{repayStatus,jdbcType=INTEGER},
+      mchnt_txn_ssn = #{mchntTxnSsn,jdbcType=VARCHAR},
+      thaw = #{thaw,jdbcType=INTEGER},
+      fuiouMessageNo = #{fuioumessageno,jdbcType=VARCHAR},
+      fileStatus = #{filestatus,jdbcType=INTEGER},
+      failureCause = #{failurecause,jdbcType=VARCHAR},
+      principleId = #{principleid,jdbcType=INTEGER},
+      principleH5 = #{principleh5,jdbcType=VARCHAR},
+      principlePC = #{principlepc,jdbcType=VARCHAR},
+      isSyn = #{issyn,jdbcType=INTEGER},
+      itemNo = #{itemno,jdbcType=VARCHAR},
+      mgid = #{mgid,jdbcType=INTEGER},
+      productMarking = #{productmarking,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

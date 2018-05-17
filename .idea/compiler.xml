@@ -8,15 +8,14 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
         <module name="jjlb_App" />
-        <module name="jjlb_parent" />
         <module name="service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common" target="1.7" />
-      <module name="jjlb_App" target="1.7" />
-      <module name="jjlb_parent" target="1.5" />
-      <module name="service" target="1.7" />
+      <module name="common" target="1.8" />
+      <module name="jjlb_App" target="1.8" />
+      <module name="jjlb_parent" target="1.8" />
+      <module name="service" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

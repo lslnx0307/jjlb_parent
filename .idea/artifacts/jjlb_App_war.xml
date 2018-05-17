@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="jjlb_App:war">
     <output-path>$PROJECT_DIR$/jjlb_App/target</output-path>
-    <root id="archive" name="jjlb_App.war">
+    <root id="archive" name="jjlb_App-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="jjlb_App:war exploded" />
     </root>
   </artifact>
