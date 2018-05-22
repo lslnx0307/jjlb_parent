@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
         <module name="jjlb_App" />
+        <module name="pay" />
         <module name="service" />
       </profile>
     </annotationProcessing>
@@ -15,6 +16,7 @@
       <module name="common" target="1.8" />
       <module name="jjlb_App" target="1.8" />
       <module name="jjlb_parent" target="1.8" />
+      <module name="pay" target="1.8" />
       <module name="service" target="1.6" />
     </bytecodeTargetLevel>
   </component>
