@@ -1,10 +1,11 @@
 package com.jjlb.model.entity.fuiou;
 
+import com.jjlb.jzh.data.BaseReqdata;
+import com.jjlb.jzh.service.JZHService;
+
 import java.io.Serializable;
 import java.util.Date;
 
-import com.jzh.data.BaseReqdata;
-import com.jzh.service.JZHService;
 
 public class SysFuiouNoticeLog implements Serializable{
 	

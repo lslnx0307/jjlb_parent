@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
         <module name="jjlb_App" />
-        <module name="pay" />
         <module name="service" />
       </profile>
     </annotationProcessing>

@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/jjlb_App/jjlb_App.iml" filepath="$PROJECT_DIR$/jjlb_App/jjlb_App.iml" />
       <module fileurl="file://$PROJECT_DIR$/jjlb_parent.iml" filepath="$PROJECT_DIR$/jjlb_parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pay/pay.iml" filepath="$PROJECT_DIR$/pay/pay.iml" />
       <module fileurl="file://$PROJECT_DIR$/service/service.iml" filepath="$PROJECT_DIR$/service/service.iml" />
     </modules>
   </component>

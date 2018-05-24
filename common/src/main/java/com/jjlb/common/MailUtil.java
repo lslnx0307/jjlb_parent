@@ -16,9 +16,9 @@ public class MailUtil {
     protected static final Logger logger = Logger.getLogger(MailUtil.class); 
     public static String host = "smtp.exmail.qq.com";// 设置邮件服务器,如果不用163的,自己找找看相关的
     public static int smtpPort = 465;//端口号
-    public static String sender = "system@jinjilibao.com";//发件人
-    public static String name = "system";//昵称
-    public static String username = "system@jinjilibao.com";// 登录账号,一般都是和邮箱名一样吧  
+    public static String sender = "sys@jinjilibao.com";//发件人
+    public static String name = "sys";//昵称
+    public static String username = "sys@jinjilibao.com";// 登录账号,一般都是和邮箱名一样吧
     public static String password = "Ad123456";// 发件人邮箱的登录密码
  
     public static boolean send(Mail mail) {  

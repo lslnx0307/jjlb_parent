@@ -1,9 +1,12 @@
 package com.jjlb.common;
 
-import java.util.Locale;
-
 import org.springframework.context.support.ResourceBundleMessageSource;
 
+import java.util.Locale;
+
+/**
+ * @author lslnx0307
+ */
 public class MessageSourceHelper {
 	
 	private static ResourceBundleMessageSource messageSource;

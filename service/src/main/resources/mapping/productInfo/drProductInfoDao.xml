@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jjlb.dao.productDao.drProductInfoDao">
-  <resultMap id="BaseResultMap" type="com.jjlb.model.entity.productInfo.drProductInfo">
+<mapper namespace="com.jjlb.dao.product.DrProductExtendDAO.drProductInfoDao">
+  <resultMap id="BaseResultMap" type="com.jjlb.model.entity.product.drProductInfo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="fid" jdbcType="INTEGER" property="fid" />
     <result column="sid" jdbcType="INTEGER" property="sid" />
@@ -92,7 +92,7 @@
     delete from dr_product_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+  <insert id="insert" parameterType="com.jjlb.model.entity.product.drProductInfo">
     insert into dr_product_info (id, fid, sid, 
       code, fullName, simpleName, 
       type, status, intermediary, 
@@ -140,7 +140,7 @@
       #{principlepc,jdbcType=VARCHAR}, #{issyn,jdbcType=INTEGER}, #{itemno,jdbcType=VARCHAR}, 
       #{mgid,jdbcType=INTEGER}, #{productmarking,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+  <insert id="insertSelective" parameterType="com.jjlb.model.entity.product.drProductInfo">
     insert into dr_product_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -555,7 +555,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jjlb.model.entity.product.drProductInfo">
     update dr_product_info
     <set>
       <if test="fid != null">
@@ -762,7 +762,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jjlb.model.entity.productInfo.drProductInfo">
+  <update id="updateByPrimaryKey" parameterType="com.jjlb.model.entity.product.drProductInfo">
     update dr_product_info
     set fid = #{fid,jdbcType=INTEGER},
       sid = #{sid,jdbcType=INTEGER},

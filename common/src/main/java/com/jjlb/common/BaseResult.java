@@ -2,12 +2,12 @@
 
 package com.jjlb.common;
 
+import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.List;
-
-import com.github.pagehelper.PageInfo;
-
-import io.swagger.annotations.ApiModelProperty;
+import java.util.Map;
 
 public class BaseResult<T> implements Serializable{
 	
@@ -18,7 +18,7 @@ public class BaseResult<T> implements Serializable{
 	private boolean success = true;
 	
 	
-	@ApiModelProperty(value="状态编号10000:成功;10001：处理中;10002：失败;10003:银行验证码有误;10004:登录密码错误,剩余重试次数;10005:注册发送短信时图形验证码过期;11110：代表帐户在其他设备登录;11111：代表session超时;")
+	@ApiModelProperty(value="状态编号10000:成功;10001：处理中;10002：失败;10003:身份证已存在;10004:登录密码错误,剩余重试次数;10005:注册发送短信时图形验证码过期;11110：代表帐户在其他设备登录;11111：代表session超时;")
 	private String code ="10000";
 	
 	
@@ -36,7 +36,10 @@ public class BaseResult<T> implements Serializable{
 	
 	@ApiModelProperty(value="分页列表")
 	private PageInfo<T> pages;
-	
+
+	@ApiModelProperty(hidden = true)
+	private Map<?,?> map;
+
 	public BaseResult() {
 		super();
 	}
@@ -126,5 +129,13 @@ public class BaseResult<T> implements Serializable{
 
 	public void setPages(PageInfo<T> pages) {
 		this.pages = pages;
+	}
+
+	public Map<?, ?> getMap() {
+		return map;
+	}
+
+	public void setMap(Map<?, ?> map) {
+		this.map = map;
 	}
 }
