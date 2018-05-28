@@ -4,6 +4,7 @@ import com.jjlb.model.entity.product.DrProductInfo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -223,4 +224,31 @@ public interface DrProductInfoDAO {
 	 */
 	public DrProductInfo selectProductById(Integer id);
 
+	/**
+	 * 查询募集完成的产品 以及募集中的新手产品
+	 * @return
+	 */
+	public List<DrProductInfo> selectRaiseSuccesProductInfo();
+
+	/**
+	 * 查询要到期的产品
+	 * @return
+	 */
+	public List<DrProductInfo> selectExpireProductInfo();
+
+	/**
+	 * 通过PID修改产品状态
+	 * @return void
+	 * @throws SQLException;
+	 */
+	public void updateDrProductInfoStatusById(@Param("status") Integer status, @Param("pid") Integer pid)
+			throws SQLException;
+
+	/**
+	 * 更新产品回款状态
+	 * @param  map
+	 * @return void
+	 * @throws SQLException;
+	 */
+	public void updateDrProductInfoInterestRepay(Map<String, Object> map);
 }

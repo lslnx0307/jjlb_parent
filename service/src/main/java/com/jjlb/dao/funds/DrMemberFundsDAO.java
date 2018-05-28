@@ -4,6 +4,7 @@ import com.jjlb.model.entity.funds.DrMemberFunds;
 import org.springframework.stereotype.Repository;
 
 import java.sql.SQLException;
+import java.util.List;
 
 
 /**
@@ -35,6 +36,8 @@ public interface DrMemberFundsDAO {
 	 * @return void
 	 * @throws SQLException
 	 */
-    public void insertDrMemberFunds(DrMemberFunds drMemberFunds) throws SQLException; 
+    public void insertDrMemberFunds(DrMemberFunds drMemberFunds) throws SQLException;
+
+	void batchUpdateDrMemberFunds(List<DrMemberFunds> list);
     
 }

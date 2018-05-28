@@ -16,7 +16,7 @@
       <module name="jjlb_App" target="1.8" />
       <module name="jjlb_parent" target="1.8" />
       <module name="pay" target="1.8" />
-      <module name="service" target="1.6" />
+      <module name="service" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

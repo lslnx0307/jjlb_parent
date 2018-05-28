@@ -21,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 /**
  * 恒丰存管2.0
@@ -51,6 +53,8 @@ public class FuiouConfig {
 	public final static String FREEZEURL;//冻结
 	public final static String UNFREEZEURL;//解冻
 	public final static String BRECHARGE12URL;//商户P2P网站免登录网银充值跳银行（网页版）
+	public final static String BALANCEACTIONURL;//余额查询
+	public final static String TRANSFERBUURL;//划拨(个人与个人之间)接口地址
 
 	public final static String REG = "000000";//开户注册（直连）
 	public final static String ARTIFREG = "000001";//法人开户注册（直连）
@@ -128,6 +132,8 @@ public class FuiouConfig {
 		QUERYCZTXURL=ConfigReader.getConfig("jzh_url") + ConfigReader.getConfig("querycztxurl");
 		TRANSFERBMUURL = ConfigReader.getConfig("jzh_url") + ConfigReader.getConfig("transferbmuurl");
 		BRECHARGE12URL =  ConfigReader.getConfig("jzh_url") + ConfigReader.getConfig("500012url");
+		BALANCEACTIONURL =ConfigReader.getConfig("jzh_url") + ConfigReader.getConfig("balanceactionurl");
+		TRANSFERBUURL = ConfigReader.getConfig("jzh_url") + ConfigReader.getConfig("transferbuurl");
 	}
 	
 	
@@ -143,7 +149,7 @@ public class FuiouConfig {
 			FreezeReqData data = new FreezeReqData();
 			data.setVer(VER);
 			data.setMchnt_cd(MCHNT_CD);
-			data.setMchnt_txn_ssn(Utils.createOrderNo(6, (Integer)params.get("uid"), ""));
+			data.setMchnt_txn_ssn(Utils.createOrderNo(6, dto.getUid(), ""));
 			data.setCust_no(dto.getCust_no());
 			data.setAmt(yuanToCent(dto.getAmt()));
 			data.setRem(dto.getRem());
@@ -770,5 +776,103 @@ public class FuiouConfig {
 		sysFuiouNoticeLog.setMgType(1);incrMg(sysFuiouNoticeLog);
 		return sysFuiouNoticeLog.getReq_message();
 	}
-	
+
+	/**
+	 * 查询余额
+	 * @param map
+	 * @return
+	 */
+	public static BaseResult balanceAction(Map<String, String> map){
+		BaseResult br = new BaseResult();
+		BalanceActionReqData data = new BalanceActionReqData();
+		data.setMchnt_cd(FuiouConfig.MCHNT_CD);
+		data.setMchnt_txn_ssn(Utils.createOrderNo(6, 1, ""));
+		Date newDate=new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMdd");
+		data.setMchnt_txn_dt(sdf.format(newDate));
+		data.setCust_no(map.get("cust_no").toString());
+
+		try {
+			JSONObject json = JZHService.sendHttp(BALANCEACTIONURL,data);
+			if(!"0000".equals((String)json.get("resp_code"))){
+				br.setSuccess(false);
+				br.setMsg((String)json.get("resp_desc"));
+				br.setMap(json);
+				return br;
+			}
+			br.setMap(json);
+			br.setSuccess(true);
+		} catch(RuntimeException re){
+			br.setSuccess(false);
+			br.setMsg(re.getMessage());
+		} catch (Exception e) {
+			br.setSuccess(false);
+			br.setMsg(e.getMessage());
+			e.printStackTrace();
+		}
+		return br;
+
+	}
+
+	/**
+	 * 划拨
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public static BaseResult transferBu(Map<String, String>params){
+		BaseResult br = new BaseResult();
+		br.setSuccess(true);
+		TransferBuReqData data = new TransferBuReqData();
+		data.setVer(VER);
+		data.setMchnt_cd(MCHNT_CD);
+		data.setMchnt_txn_ssn(params.get("mchnt_txn_ssn"));
+
+		//付款账户
+		data.setOut_cust_no(params.get("out_cust_no"));
+		//收款账户
+		data.setIn_cust_no(params.get("in_cust_no"));
+		//金额 分为单位
+		data.setAmt(yuanToCent(params.get("amt")));
+		data.setRem(params.get("rem"));
+		//预授权合同号
+		data.setContract_no(params.get("contract_no"));
+
+		//记录日志
+		SysFuiouNoticeLog sysFuiouNoticeLog = new SysFuiouNoticeLog(data);
+		sysFuiouNoticeLog.setIcd(TRANSFERBU);
+		sysFuiouNoticeLog.setUser_id(data.getOut_cust_no());
+		sysFuiouNoticeLog.setAmt(data.getAmt());
+		//划拨类型
+		sysFuiouNoticeLog.setIcd_name("划拨直连");
+		sysFuiouNoticeLog.setMgType(1);incrMg(sysFuiouNoticeLog);
+
+		try {
+			JSONObject json = JZHService.sendHttp(TRANSFERBUURL,data);
+			//修改日志日志
+			sysFuiouNoticeLog.setMessage(json.toString());
+			sysFuiouNoticeLog.setResp_code(json.getString("resp_code"));
+			sysFuiouNoticeLog.setResp_desc(json.getString("resp_desc"));
+			//3122原授权交易已完成
+			if(!"0000".equals((String)json.get("resp_code")) && !"3122".equals((String)json.get("resp_code")) ){
+				br.setSuccess(false);
+				br.setMsg((String)json.get("resp_desc"));
+				br.setMap(json);
+				sysFuiouNoticeLog.setStatus(3);
+				sysFuiouNoticeLog.setMgType(2);incrMg(sysFuiouNoticeLog);
+				return br;
+			}
+			sysFuiouNoticeLog.setStatus(2);
+			sysFuiouNoticeLog.setMgType(2);incrMg(sysFuiouNoticeLog);
+			br.setMap(json);
+		} catch(RuntimeException re){
+			br.setSuccess(false);
+			br.setMsg(re.getMessage());
+		} catch (Exception e) {
+			br.setSuccess(false);
+			br.setMsg(e.getMessage());
+			e.printStackTrace();
+		}
+		return br;
+	}
 }

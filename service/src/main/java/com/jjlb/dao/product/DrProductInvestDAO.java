@@ -86,7 +86,6 @@ public interface DrProductInvestDAO {
 
 	/**
 	  * 查询投资记录前100条数据
-	  * @param param
 	  * @return
 	  */
 	 public List<DrProductInfo>  selectInvest();
@@ -135,7 +134,7 @@ public interface DrProductInvestDAO {
 	public List<DrProductInvest> selectSimpleInvestLog(Integer pid);
 	/**
 	 * 根据条件查询是否可提现
-	 * @param param
+	 * @param uid
 	 * @return
 	 */
 	public Integer selectInvestCount(Integer uid);
@@ -154,7 +153,7 @@ public interface DrProductInvestDAO {
 	
 	/**
 	 * 根据投资id查奖品详情
-	 * @param investId
+	 * @param param
 	 * @return
 	 */
 	public List<Map<String,Object>> selectprizeInfoByInvestId(Map<String, Object> param);
@@ -276,4 +275,16 @@ public interface DrProductInvestDAO {
 	 * @return
 	 */
 	public List<Map<String,Object>> selectInvestInTime(Map<String, Object> map);
+
+	/**
+	 * 根据产品ID查询未处理的投资记录
+	 * @param pid
+	 * @return
+	 */
+	public List<DrProductInvest> getFuiouDrProductInvestListByPid(@Param("pid")Integer pid);
+
+	/**
+	 * 通过ID批量修改投资记录状态
+	 */
+	public void updateStatusByIds(@Param("status")String status,@Param("ids")String[] ids);
 }

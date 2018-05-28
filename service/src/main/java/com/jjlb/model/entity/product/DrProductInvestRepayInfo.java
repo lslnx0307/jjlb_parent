@@ -12,6 +12,8 @@ public class DrProductInvestRepayInfo {
 	
 	private Integer uid;//用户ID
 	
+	private Integer investId;
+	
 	private Integer pid;
 	
 	private BigDecimal shouldPrincipal;//应收本金	
@@ -29,24 +31,70 @@ public class DrProductInvestRepayInfo {
 	private Date shouldTime;//
 	
 	private Date factTime;//
+	private Integer pdId;//按月付息产品，每期回款ID
 	
-	private Integer isgrant;//是否已发红包0未发放，1已发放
+	private String remitMchntTxnSsn;//划拨还款流水号
+	private int remitStatus;//划拨还款状态，1-未划拨，2-成功，3-失败
+	private String remitFailReson;//划拨还款失败原因
+	private Integer fileStatus;//状态
+	private String fuiouMessageNo;//报文流水号
+	private String failureCause;//失败原因
+	private String tableName = "dr_product_invest_repayinfo";//表名
 	
-
-
-	public Integer getIsgrant() {
-		return isgrant;
+	private Integer transfer_status; //转账状态 1-未转账 2-成功，3-失败
+	private String transferMchntTxnSsn;//转账流水号
+	private String transfer_fail_reson;//转账失败原因
+	
+	private Integer productType;//产品type
+	private String project_no;//产品type
+	
+	private BigDecimal basicprofit;//基本利息
+	private Integer mchntPay;//基本利息
+	private BigDecimal platformInterest;//平台贴息
+	private BigDecimal interestRateCoupon;//加息券利息
+	private BigDecimal interestDoubleCoupons;//翻倍券利息
+	private BigDecimal interestSubsidy;//未满标贴息
+	
+	public BigDecimal getPlatformInterest() {
+		return platformInterest;
+	}
+	public void setPlatformInterest(BigDecimal platformInterest) {
+		this.platformInterest = platformInterest;
+	}
+	public BigDecimal getInterestRateCoupon() {
+		return interestRateCoupon;
+	}
+	public void setInterestRateCoupon(BigDecimal interestRateCoupon) {
+		this.interestRateCoupon = interestRateCoupon;
+	}
+	public BigDecimal getInterestDoubleCoupons() {
+		return interestDoubleCoupons;
+	}
+	public void setInterestDoubleCoupons(BigDecimal interestDoubleCoupons) {
+		this.interestDoubleCoupons = interestDoubleCoupons;
+	}
+	public BigDecimal getInterestSubsidy() {
+		return interestSubsidy;
+	}
+	public void setInterestSubsidy(BigDecimal interestSubsidy) {
+		this.interestSubsidy = interestSubsidy;
 	}
 
-	public void setIsgrant(Integer isgrant) {
-		this.isgrant = isgrant;
+	
+	public String getTableName() {
+		return tableName;
 	}
-
-	public DrProductInvestRepayInfo(Integer uid, Integer pid, BigDecimal shouldPrincipal,
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	public DrProductInvestRepayInfo(){}
+	public DrProductInvestRepayInfo(Integer uid, Integer investId, Integer pid, BigDecimal shouldPrincipal,
 			BigDecimal factPrincipal, BigDecimal shouldInterest,
-			BigDecimal factInterest, BigDecimal penalty, Integer status ,Date shouldTime) {
+			BigDecimal factInterest, BigDecimal penalty, Integer status ,Date shouldTime,BigDecimal basicprofit,
+			BigDecimal platformInterest,BigDecimal interestRateCoupon,BigDecimal interestDoubleCoupons,BigDecimal interestSubsidy) {
 		super();
 		this.uid = uid;
+		this.investId = investId;
 		this.pid = pid;
 		this.shouldPrincipal = shouldPrincipal;
 		this.factPrincipal = factPrincipal;
@@ -55,10 +103,67 @@ public class DrProductInvestRepayInfo {
 		this.penalty = penalty;
 		this.status = status;
 		this.shouldTime = shouldTime;
+		this.basicprofit=basicprofit;
+		this.platformInterest=platformInterest;
+		this.interestRateCoupon=interestRateCoupon;
+		this.interestDoubleCoupons=interestDoubleCoupons;
+		this.interestSubsidy=interestSubsidy;
 	}
+
 	
-	public DrProductInvestRepayInfo(){
-		super();
+	
+	public String getProject_no() {
+		return project_no;
+	}
+	public void setProject_no(String project_no) {
+		this.project_no = project_no;
+	}
+	public Integer getProductType() {
+		return productType;
+	}
+	public void setProductType(Integer productType) {
+		this.productType = productType;
+	}
+	public Integer getTransfer_status() {
+		return transfer_status;
+	}
+	public void setTransfer_status(Integer transfer_status) {
+		this.transfer_status = transfer_status;
+	}
+	public String getTransferMchntTxnSsn() {
+		return transferMchntTxnSsn;
+	}
+	public void setTransferMchntTxnSsn(String transferMchntTxnSsn) {
+		this.transferMchntTxnSsn = transferMchntTxnSsn;
+	}
+	public String getTransfer_fail_reson() {
+		return transfer_fail_reson;
+	}
+	public void setTransfer_fail_reson(String transfer_fail_reson) {
+		this.transfer_fail_reson = transfer_fail_reson;
+	}
+	public Integer getFileStatus() {
+		return fileStatus;
+	}
+
+	public void setFileStatus(Integer fileStatus) {
+		this.fileStatus = fileStatus;
+	}
+
+	public String getFuiouMessageNo() {
+		return fuiouMessageNo;
+	}
+
+	public void setFuiouMessageNo(String fuiouMessageNo) {
+		this.fuiouMessageNo = fuiouMessageNo;
+	}
+
+	public String getFailureCause() {
+		return failureCause;
+	}
+
+	public void setFailureCause(String failureCause) {
+		this.failureCause = failureCause;
 	}
 
 	public Integer getId() {
@@ -147,6 +252,58 @@ public class DrProductInvestRepayInfo {
 
 	public void setPid(Integer pid) {
 		this.pid = pid;
+	}
+
+	public Integer getInvestId() {
+		return investId;
+	}
+
+	public void setInvestId(Integer investId) {
+		this.investId = investId;
+	}
+
+	public Integer getPdId() {
+		return pdId;
+	}
+
+	public void setPdId(Integer pdId) {
+		this.pdId = pdId;
+	}
+
+	public String getRemitMchntTxnSsn() {
+		return remitMchntTxnSsn;
+	}
+
+	public void setRemitMchntTxnSsn(String remitMchntTxnSsn) {
+		this.remitMchntTxnSsn = remitMchntTxnSsn;
+	}
+
+	public int getRemitStatus() {
+		return remitStatus;
+	}
+
+	public void setRemitStatus(int remitStatus) {
+		this.remitStatus = remitStatus;
+	}
+
+	public String getRemitFailReson() {
+		return remitFailReson;
+	}
+
+	public void setRemitFailReson(String remitFailReson) {
+		this.remitFailReson = remitFailReson;
+	}
+	public BigDecimal getBasicprofit() {
+		return basicprofit;
+	}
+	public void setBasicprofit(BigDecimal basicprofit) {
+		this.basicprofit = basicprofit;
+	}
+	public Integer getMchntPay() {
+		return mchntPay;
+	}
+	public void setMchntPay(Integer mchntPay) {
+		this.mchntPay = mchntPay;
 	}
 	
 }

@@ -182,4 +182,33 @@ public interface DrMemberFavourableDAO {
 	 * @return
 	 */
 	public List<Map<String,Object>> selectSpringOutFavourable(Map<String, Object> map);
+
+	/**
+	 * 修改优惠券状态
+	 * @param drMemberFavourable
+	 * @throws SQLException
+	 */
+	void updateByPrimaryKey(DrMemberFavourable drMemberFavourable) throws SQLException;
+
+	/**
+	 * 获取体验金金额合计
+	 * @param map
+	 * @return
+	 */
+	public BigDecimal getExperienceAmount(Map<String,Object> map);
+
+	/**
+	 *
+	 * @param map
+	 */
+	public void updateByExperience(Map<String,Object> map);
+
+	public Map<String, Object> getFavourableById(Map<String, Object> map);
+
+	/**
+	 * 根据uid获取用户优惠卷金额
+	 * @param uid
+	 * @return
+	 */
+	public BigDecimal selectHasRedPacket(Integer uid);
 }

@@ -20,7 +20,7 @@ public interface MainService {
      * @param dto
      * @return
      */
-    public BaseResult<String> openAccount(DrMemberBankDto dto);
+    BaseResult<String> openAccount(DrMemberBankDto dto);
 
 
     /**
@@ -28,26 +28,36 @@ public interface MainService {
      * @param dto
      * @return
      */
-    public BaseResult<String> fastRecharge(DrMemberFastRechargeDto dto) throws Exception;
+    BaseResult<String> fastRecharge(DrMemberFastRechargeDto dto) throws Exception;
 
     /**
      * 网银充值
      * @param dto
      * @return
      */
-    public BaseResult<OnlineBankingRechargeResultDto> onlineBankingRecharge(DrMemberOnlineBankingRechargeDto dto);
+    BaseResult<OnlineBankingRechargeResultDto> onlineBankingRecharge(DrMemberOnlineBankingRechargeDto dto);
 
     /**
      * 投资接口
      * @param dto
      * @return
      */
-    public BaseResult<String> invest(InvestDto dto);
+    BaseResult<String> invest(InvestDto dto);
 
     /**
      * 提现
      * @param dto
      * @return
      */
-    public BaseResult<String> withdraw(DrMemberWithdrawalsDto dto);
+    BaseResult<String> withdraw(DrMemberWithdrawalsDto dto);
+
+    /**
+     * 计息
+     * @return
+     */
+    void interestRate();
+
+    void productRepay();
+
+
 }
