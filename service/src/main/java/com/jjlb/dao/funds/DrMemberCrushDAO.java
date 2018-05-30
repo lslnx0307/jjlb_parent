@@ -27,13 +27,7 @@ public interface DrMemberCrushDAO {
 	 * @return DrMemberCrush
 	 */
     public DrMemberCrush getDrMemberCrushByPayNum(String payNum); 
-    
-	/**
-	 * 根据商户唯一订单号查状态
-	 * @param payNum
-	 * @return DrMemberCrush
-	 */
-    public DrMemberCrush getDrMemberCrushByStatus(String payNum); 
+
     
 	/**
 	 * 根据商户订单号修改
@@ -46,22 +40,10 @@ public interface DrMemberCrushDAO {
     /**
      * 查询充值总额
      * @param uid
+	 * @param type
      * @return
      */
     public BigDecimal getDrMemberCrushAmountByUID(@Param(value = "uid") Integer uid, @Param(value = "type") Integer type);
-    
-    /**
-     * 根据uid查询充值记录
-     * @param uid
-     * @return
-     */
-    public Integer getCrushCount(Integer uid);
-    
-    /**
-     * 只 只根据商户唯一订单号查询
-     * @param payNum
-     * @return DrMemberCrush
-     */
-    public DrMemberCrush getFuiouDrMemberCrushByPayNum(String payNum); 
+
     
 }

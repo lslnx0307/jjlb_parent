@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
-import java.util.Map;
 
 /**
  * @author lslnx0307
@@ -19,43 +18,16 @@ public interface DrMemberCarryDAO {
 	 * @return void
 	 * @throws SQLException
 	 */
-    public void insertDrMemberCarry(DrMemberCarry drMemberCarry) throws SQLException;
-    
+	void insertDrMemberCarry(DrMemberCarry drMemberCarry) throws SQLException;
+
+
 	/**
-	 * 修改状态
-	 * @param drMemberCarry
-	 * @return void
-	 * @throws SQLException
+	 * 根据uid和type查询用户的提现金额
+	 * @param uid
+	 * @param type
+	 * @return
 	 */
-    public void updateStatusById(DrMemberCarry drMemberCarry) throws SQLException; 
+	BigDecimal selectCarryAmountCount(@Param(value = "uid") Integer uid, @Param(value = "type") Integer type);
     
-    public BigDecimal selectCarryAmountCount(@Param(value = "uid") Integer uid, @Param(value = "type") Integer type);
-    
-    /**
-     * 查询历史提现总额
-     * @param uid
-     * @return
-     */
-    public BigDecimal selectAmountByUid(Integer uid); 
-    /**
-     * 根据uid获取最后一笔提现的订单
-     * @param uid
-     * @return
-     */
-    public DrMemberCarry selectCarryByUid(Integer uid);
-    /**
-	 * 根据商户订单号查询
-	 * @param map
-	 * @return DrMemberCarry
-	 * @throws SQLException
-	 */
-    public DrMemberCarry selectDrMemberCarryByPaymentnum(Map<String, Object> map);
-    
-    /**
-     * 根据流水号查询提现记录
-     * @param paymentnum
-     * @return
-     */
-    public DrMemberCarry selectDrMemberCarryByPaymentnumFuIou(String paymentnum);
 
 }

@@ -5,7 +5,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+/**
+ * @author lslnx0307
+ */
+@Repository
 public interface DrProductExtendDAO {
 	
 	/**
@@ -15,18 +18,5 @@ public interface DrProductExtendDAO {
 	 */
 	public List<DrProductExtend> getDrProductExtendByPid(int pid);
 
-    @Repository
-    interface drProductInfoDao {
-        int deleteByPrimaryKey(Integer id);
 
-        int insert(drProductInfo record);
-
-        int insertSelective(drProductInfo record);
-
-        drProductInfo selectByPrimaryKey(Integer id);
-
-        int updateByPrimaryKeySelective(drProductInfo record);
-
-        int updateByPrimaryKey(drProductInfo record);
-    }
 }

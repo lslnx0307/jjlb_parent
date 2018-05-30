@@ -1,9 +1,10 @@
 package com.jjlb.dao.product;
 
+import com.jjlb.model.entity.product.JsActivityProductInvestInfo;
+
 import java.util.List;
 import java.util.Map;
 
-import com.jjlb.model.product.JsActivityProductInvestInfo;
 
 
 public interface JsActivityProductInvestInfoDAO {

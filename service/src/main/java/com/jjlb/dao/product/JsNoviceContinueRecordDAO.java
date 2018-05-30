@@ -1,21 +1,19 @@
 package com.jjlb.dao.product;
 
-import java.util.List;
-import java.util.Map;
-
-import com.jjlb.model.product.JsNoviceContinueRecord;
+import com.jjlb.model.entity.product.JsNoviceContinueRecord;
+import org.springframework.stereotype.Repository;
 
 
+/**
+ * @author lslnx0307
+ */
+@Repository
 public interface JsNoviceContinueRecordDAO {
 	/**
 	 * 插入
-	 * @param jsActivityProductInvestInfo
+	 * @param jsNoviceContinueRecord
 	 */
 	public void insert(JsNoviceContinueRecord jsNoviceContinueRecord);
 	
 	
-	public List<Map<String,Object>> selectResultByMap(Map<String, Object> map);
-	
-	
-	public List<JsNoviceContinueRecord> selectJsNoviceContinueRecordByMap(Map<String, Object> map);
 }

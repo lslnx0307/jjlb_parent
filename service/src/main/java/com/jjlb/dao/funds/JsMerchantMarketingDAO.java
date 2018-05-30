@@ -4,7 +4,6 @@ import com.jjlb.model.entity.sys.JsMerchantMarketing;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -15,13 +14,7 @@ import java.util.Map;
 @Repository
 public interface JsMerchantMarketingDAO {
 	
-	/**
-	 *  根据map查询
-	 * @param map
-	 * @return
-	 */
-	public List<JsMerchantMarketing> selectObjectByMap(Map<String, Object> map);
-	
+
 	/**
 	 * 添加
 	 * @param obj
@@ -33,9 +26,4 @@ public interface JsMerchantMarketingDAO {
 	 */
 	public void insertBatch(List<JsMerchantMarketing> list);
 	
-	/**
-	 * 修改
-	 * @param obj
-	 */
-	public void update(JsMerchantMarketing obj);
 }
